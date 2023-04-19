@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-  <small-user-profile-vue   v-for="(user, i) in users" :key="i" :user="users[i]">
-    
+    <h1 class="user_title">{{ usersName }}</h1>
+  <small-user-profile-vue      @user_clicked="show_user"  v-for="(user, i) in users" :key="i" :user="users[i]">
+
   </small-user-profile-vue>
   </div>
 </template>
@@ -13,17 +14,24 @@ export default {
   components: {
     SmallUserProfileVue
   },
-  data() {
+  data(){
+    
     return {
+      usersName:'',
       users: [{
         name: `lula`,
         age: 29,
-        is_premium: true,
+        is_premium: false,
         id: 101,
         
     }]
     }
   },
+  methods: {
+    show_user(name){
+        this.usersName=name
+    }
+  }
 }
 </script>
 
